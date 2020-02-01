@@ -1,22 +1,31 @@
-Role Name
+Apigee Response File Settings
 =========
 
-A brief description of the role goes here.
+This Ansible role is used to generate response file names dynamically 
+using attributes that are available at runtime.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+The Ansible role apigee-opdk-settings-region will dynamically determine
+the region of the current node. 
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+The following variables are used in this role:
+
+| Name | Description |
+| --- | --- |
+| region | Region of the current node. Can be set by the apigee-opdk-settings-region Ansible role. |
+| opdk_version | Apigee Private Cloud version being installed. Usually set in `~/.apigee/custom-properties.yml`. |
+| local_apigee_secure_path | Path to location of security credentials and attributes. Usually set in `~/.apigee/custom-properties.yml`. |
+| target_response_file_path | Path to location of resources used during installation on the current node. Usually set in `~/.apigee/custom-properties.yml`. |  
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+This role depends on apigee-opdk-settings-region and the attributes set in `~/.apigee/custom-properties.yml`.
 
 Example Playbook
 ----------------
@@ -30,9 +39,20 @@ Including an example of how to use your role (for instance, with variables passe
 License
 -------
 
-BSD
+Apache 2.0
 
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Carlos Frias
+<!-- BEGIN Google How To Contribute -->
+# How to Contribute
+
+We'd love to accept your patches and contributions to this project. Please review our [guidelines](CONTRIBUTING.md).
+<!-- END Google How To Contribute -->
+<!-- BEGIN Google Required Disclaimer -->
+
+# Not Google Product Clause
+
+This is not an officially supported Google product.
+<!-- END Google Required Disclaimer -->
